@@ -1,0 +1,17 @@
+{
+	"memberInfo", [{
+		"name" : 'oskmkr',
+		"age" : 28,
+		"hobby" : "soccer"
+	},
+	{
+		"name" : 'hatsukoi7',
+		"age" : 18,
+		"hobby" : "diablo"
+	},
+	{
+		"name" : 'google',
+		"age" : 20,
+		"hobby" : "search"
+	}]
+}
