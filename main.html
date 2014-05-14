@@ -6,7 +6,7 @@
 	<title>oskm's Home!</title>
 		<!--
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
-	    -->
+	-->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.css">
 </head>
 <body>
@@ -49,20 +49,19 @@
 	</div>
 
 	<hr><hr>
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron" ng-controller="TitleController">
-		<div class="container">
-			<h1>Welcome!</h1>
-			<p>웹기술에 관한 이런 저런 주제들에 대해 정리해 봅니다.</p>
-			<p><a class="btn btn-primary btn-lg">목차 &raquo;</a></p>
-			<p>No filter : {{ greeting }}</p>
-			<p>Reverse : {{ greeting | reverse}}</p>
-			<p><input type="text" ng-model="yourName" placeholder="type..."></input>안녕하세요, {{yourName}} !!!</p>
-		</div>
-	</div>
-
 	<div class="container" ng-controller="ContentsController">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="input-group">
+					<input type="text" class="form-control">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">Add</button>
+					</span>
+				</div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
 		<!-- Example row of columns -->
+		<!--
 		<div class="row">
 			<div class="col-lg-4" ng-repeat="content in contents">
 				<h2>{{content.title}}</h2>
@@ -70,23 +69,44 @@
 				<p><a class="btn btn-default" href="{{content.url}}">View details &raquo;</a></p>
 			</div>
 		</div>
+	-->
+	<!--
+	<div class="divider"></div>
+-->
+	<ul class="list-group">
+		<li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+		<li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+		<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+		<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+	</ul>
+	<ul class="list-group">
+		<li class="list-group-item list-group-item-success"><a href="#">Dapibus ac facilisis in</a></li>
+		<li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+		<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+		<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+	</ul>
+	<div class="list-group">
+		<a href="#" class="list-group-item list-group-item-success active">Dapibus ac facilisis in</a>
+		<a href="#" class="list-group-item list-group-item-info active">Cras sit amet nibh libero</a>
+		<a href="#" class="list-group-item list-group-item-warning active">Porta ac consectetur ac</a>
+		<a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+	</div>
+	<hr>
 
-		<hr>
-        
-		<div id="footer">
-			<div class="container">
-				<p class="text-muted credit">이 블로그는 <a href="http://martinbean.co.uk">bootstrap</a> 을 이용해 개발 되었습니다.</p>
-			</div>
+	<div id="footer">
+		<div class="container">
+			<p class="text-muted credit">이 블로그는 <a href="http://martinbean.co.uk">bootstrap</a> 을 이용해 개발 되었습니다.</p>
 		</div>
 	</div>
-		    
-	
-	<script src="//code.jquery.com/jquery-1.11.0.js"></script>
-	<!--
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
-	-->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.js"></script>
-	<script src="//code.angularjs.org/angular-1.0.0rc10.min.js"></script>
-	<script src="./js/index.js"></script>
+</div>
+
+
+<script src="//code.jquery.com/jquery-1.11.0.js"></script>
+<!--
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+-->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.js"></script>
+<script src="//code.angularjs.org/angular-1.0.0rc10.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
 var connect = require('connect'), http = require('http');
 
-connect().use(connect.static('./')).use(connect.directory('./')).listen(8081);
+console.log('simple web static server started... port 8000');
+
+connect().use(connect.static('./')).use(connect.directory('./')).listen(8000);
