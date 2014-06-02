@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="oskmBlogApp">
+<html ng-app="whatToDoApp">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>oskm's Home!</title>
+	<title>What ToDo ?</title>
 		<!--
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
 	-->
@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- Static navbar -->
-	<div class="navbar navbar-default navbar-fixed-top" ng-controller="NavController">
+	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,7 +19,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/test">{{user.username}}'s Home</a>
+				<a class="navbar-brand" href="/test">What ToDo ?</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -49,7 +49,7 @@
 	</div>
 
 	<hr><hr>
-	<div class="container" ng-controller="ContentsController">
+	<div class="container" ng-controller="ContentController">
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="input-group">
@@ -73,26 +73,47 @@
 	<!--
 	<div class="divider"></div>
 -->
+	<!--
 	<ul class="list-group">
 		<li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
 		<li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
 		<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
 		<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
 	</ul>
+
 	<ul class="list-group">
-		<li class="list-group-item list-group-item-success"><a href="#">Dapibus ac facilisis in</a></li>
-		<li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+		<li class="list-group-item list-group-item-success"><a href="#"><del>Dapibus ac facilisis in</del></a></li>
+		<li class="list-group-item list-group-item-info"><del>Cras sit amet nibh libero</del></li>
 		<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
 		<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
 	</ul>
+-->
 	<div class="list-group">
-		<a href="#" class="list-group-item list-group-item-success active">Dapibus ac facilisis in</a>
-		<a href="#" class="list-group-item list-group-item-info active">Cras sit amet nibh libero</a>
-		<a href="#" class="list-group-item list-group-item-warning active">Porta ac consectetur ac</a>
-		<a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+		<a href="#" class="list-group-item list-group-item-success" ng-repeat="content in todos"><input type="checkbox">
+			{{content.subject}}
+		</a></input>
 	</div>
+
 	<hr>
 
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<input type="checkbox">
+				</span>
+				<input type="text" class="form-control">
+			</div><!-- /input-group -->
+		</div><!-- /.col-lg-6 -->
+		<div class="col-lg-6">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<input type="radio">
+				</span>
+				<input type="text" class="form-control">
+			</div><!-- /input-group -->
+		</div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
 	<div id="footer">
 		<div class="container">
 			<p class="text-muted credit">이 블로그는 <a href="http://martinbean.co.uk">bootstrap</a> 을 이용해 개발 되었습니다.</p>

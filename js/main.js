@@ -1,11 +1,32 @@
-var app = angular.module('oskmBlogApp', []);
+var app = angular.module('whatToDoApp', []);
 
-app.controller('NavController', ['$scope', function ($scope) {
+var Status = {
+    'NOTCOMPLETE' : 0,
+    'COMPLETE' : 1
+    
+};
+
+app.controller('ContentController', ['$scope', function ($scope) {
     // Contorller
-    $scope.user = {
-        'username': 'oskmkr',
-        'email': 'oskmkr@naver.com'
-    };
+    $scope.todos = [
+    {
+        'index' : 1,
+        'subject' : 'study english',
+        'status' : Status.NOTCOMPLETE
+    },
+
+    {
+        'index' : 2,
+        'subject' : 'write code',
+        'status' : Status.NOTCOMPLETE
+    },
+
+    {
+        'index' : 3,
+        'subject' : 'hard training',
+        'status' : Status.NOTCOMPLETE
+    }
+    ];
 }]);
 
 app.controller('TitleController', ['$scope', '$http', function ($scope, $http) {
@@ -64,9 +85,8 @@ app.filter('reverse', function () {
 });
 
 app.config(['$routeProvider', function($routeProvider) {
-
     $routeProvider.when('/', {
-        'templateUrl' : 'oskmBlogApp.html'
+        'templateUrl' : 'main.html'
     }).otherwise({
         'redirectTo' : './views/index.html'
     });
