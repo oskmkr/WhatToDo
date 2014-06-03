@@ -1,32 +1,32 @@
 var app = angular.module('whatToDoApp', []);
 
-var Status = {
-    'NOTCOMPLETE' : 0,
-    'COMPLETE' : 1
-    
-};
-
 app.controller('ContentController', ['$scope', function ($scope) {
     // Contorller
     $scope.todos = [
     {
         'index' : 1,
         'subject' : 'study english',
-        'status' : Status.NOTCOMPLETE
+        'done' : true
     },
 
     {
         'index' : 2,
         'subject' : 'write code',
-        'status' : Status.NOTCOMPLETE
+        'done' : false
     },
 
     {
         'index' : 3,
         'subject' : 'hard training',
-        'status' : Status.NOTCOMPLETE
+        'done' : false
     }
     ];
+
+    $scope.change = function() {
+        console.log('$scope.change..', this);
+    };
+
+    
 }]);
 
 app.controller('TitleController', ['$scope', '$http', function ($scope, $http) {
@@ -48,25 +48,6 @@ app.controller('TitleController', ['$scope', '$http', function ($scope, $http) {
     });
 
 }]);
-
-app.controller('ContentsController', ['$scope', '$http', function ($scope, $http) {
-    // Contorller
-    $scope.contents = [{
-        'title' : 'back-end',
-        'description' : 'back-end 기술에 대해 정리합니다.',
-        'url' : '#'
-    }, {
-        'title' : 'front-end',
-        'description' : 'front-end 기술에 대해 정리합니다.',
-        'url' : '#'
-    }, {
-        'title' : 'TDD',
-        'description' : 'TDD 기술에 대해 정리합니다.',
-        'url' : '#'
-    }];
-    
-}]);
-
 
 app.filter('reverse', function () {
     return function (input, uppercase) {

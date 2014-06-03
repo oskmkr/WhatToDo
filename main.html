@@ -60,66 +60,24 @@
 				</div><!-- /input-group -->
 			</div><!-- /.col-lg-6 -->
 		</div><!-- /.row -->
-		<!-- Example row of columns -->
-		<!--
-		<div class="row">
-			<div class="col-lg-4" ng-repeat="content in contents">
-				<h2>{{content.title}}</h2>
-				<p>{{content.description}}</p>
-				<p><a class="btn btn-default" href="{{content.url}}">View details &raquo;</a></p>
+
+		<div class="row" ng-repeat="content in todos" ng-model="todos" ng-change="change()">
+			<div class="col-lg-9">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<input type="checkbox" ng-model="todos[$index].done">
+					</span>
+					<input type="text" class="form-control" value="{{content.subject}}" ng-model="todos[$index].subject">
+				</div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+		</div>
+		<hr>
+		<div id="footer">
+			<div class="container">
+				<p class="text-muted credit">이 앱은 <a href="http://martinbean.co.uk">bootstrap</a> 을 이용해 개발 되었습니다.</p>
 			</div>
 		</div>
-	-->
-	<!--
-	<div class="divider"></div>
--->
-	<!--
-	<ul class="list-group">
-		<li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-		<li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-		<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-		<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-	</ul>
-
-	<ul class="list-group">
-		<li class="list-group-item list-group-item-success"><a href="#"><del>Dapibus ac facilisis in</del></a></li>
-		<li class="list-group-item list-group-item-info"><del>Cras sit amet nibh libero</del></li>
-		<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-		<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-	</ul>
--->
-	<div class="list-group">
-		<a href="#" class="list-group-item list-group-item-success" ng-repeat="content in todos"><input type="checkbox">
-			{{content.subject}}
-		</a></input>
 	</div>
-
-	<hr>
-
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group">
-				<span class="input-group-addon">
-					<input type="checkbox">
-				</span>
-				<input type="text" class="form-control">
-			</div><!-- /input-group -->
-		</div><!-- /.col-lg-6 -->
-		<div class="col-lg-6">
-			<div class="input-group">
-				<span class="input-group-addon">
-					<input type="radio">
-				</span>
-				<input type="text" class="form-control">
-			</div><!-- /input-group -->
-		</div><!-- /.col-lg-6 -->
-	</div><!-- /.row -->
-	<div id="footer">
-		<div class="container">
-			<p class="text-muted credit">이 블로그는 <a href="http://martinbean.co.uk">bootstrap</a> 을 이용해 개발 되었습니다.</p>
-		</div>
-	</div>
-</div>
 
 
 <script src="//code.jquery.com/jquery-1.11.0.js"></script>
