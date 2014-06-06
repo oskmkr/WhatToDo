@@ -55,5 +55,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
+console.log('test');
 
 module.exports = app;

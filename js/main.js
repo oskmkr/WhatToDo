@@ -1,7 +1,12 @@
 var app = angular.module('whatToDoApp', []);
 
-app.controller('ContentController', ['$scope', function ($scope) {
+
+
+app.controller('ContentController', ['$scope', '$log', function ($scope, $log) {
     // Contorller
+    $log.info('application started...');
+    /*
+    
     $scope.todos = [
     {
         'index' : 1,
@@ -21,12 +26,48 @@ app.controller('ContentController', ['$scope', function ($scope) {
         'done' : false
     }
     ];
-
-    $scope.change = function() {
-        console.log('$scope.change..', this);
-    };
-
+    */
     
+    $scope.add = function() {
+        var elInputField = $('._input-field'), sSubject = elInputField.val();
+        
+        elInputField.val('');
+        
+        var oNewTodo = {
+            'index' : $scope.todos.length + 1,
+            'subject' : sSubject,
+            'done' : false
+        };
+        
+        $scope.todos.push(oNewTodo);
+        
+        console.log('added', oNewTodo);
+        
+        $scope.update();
+    };
+    
+    $scope.update = function() {
+        localStorage.setItem('todos', JSON.stringify($scope.todos));
+    };
+    
+    $scope.load = function() {
+        console.dir('todos', localStorage.getItem('todos'));
+        $scope.todos = JSON.parse(localStorage.getItem('todos'));
+        
+        if(!$scope.todos) {
+            $scope.todos = [];
+        }
+    };
+    
+    $scope.test = function() {
+        console.log('test...');
+    }
+    
+    $scope.load();
+    
+    $scope.$watch('todos', function(newVal, oldVal) {
+        console.log(newVal, oldVal);
+    });
 }]);
 
 app.controller('TitleController', ['$scope', '$http', function ($scope, $http) {
@@ -49,6 +90,20 @@ app.controller('TitleController', ['$scope', '$http', function ($scope, $http) {
 
 }]);
 
+
+app.directive('ngEnterKey', function() {
+    return function(scope, element, attrs) {
+        element.bind('keydown', function(event) {
+            if(event.which === 13) {
+                scope.$eval(attrs.ngEnterKey);
+                scope.$apply();
+            }
+        });
+        
+        event.preventDefault();
+    }
+})
+
 app.filter('reverse', function () {
     return function (input, uppercase) {
         var out = '';
@@ -64,7 +119,7 @@ app.filter('reverse', function () {
         return out;
     }
 });
-
+/*
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
         'templateUrl' : 'main.html'
@@ -73,3 +128,4 @@ app.config(['$routeProvider', function($routeProvider) {
     });
 
 }]);
+*/
