@@ -53,26 +53,23 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="input-group">
-				    <!--
-					<input type="text" class="form-control _input-field" ng-keydown="$event.keyCode == 13 ? add() : null">
-					-->
-					<input type="text" class="form-control _input-field" ng-enter-key="add()">
+					<input type="text" class="form-control">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button" ng-click="add($event)">Add</button>
+						<button class="btn btn-default" type="button">Add</button>
 					</span>
 				</div><!-- /input-group -->
 			</div><!-- /.col-lg-6 -->
 		</div><!-- /.row -->
 
-		<div class="row" ng-repeat="content in todos track by $index" ng-model="todos" ng-change="test()">
-			<div class="col-lg-6">
-				<div class="input-group">
+		<div class="row" ng-repeat="content in todos" ng-model="todos" ng-change="change()">
+			<div class="col-lg-9">
+				<div class="input-group" draggable="true">
 					<span class="input-group-addon">
 						<input type="checkbox" ng-model="todos[$index].done">
 					</span>
-					<input type="text" class="form-control" value="{{content.subject}}" ng-model="todos[$index].subject" ng-blur="test()">
+					<input type="text" class="form-control" value="{{content.subject}}" ng-model="todos[$index].subject">
 				</div><!-- /input-group -->
-			</div><!-- /.col-lg-6 -->
+			</div><!-- /.col-lg-6 --> 
 		</div>
 		<hr>
 		<div id="footer">
@@ -83,15 +80,13 @@
 	</div>
 
 
-<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.js"></script>
 <!--
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.js"></script>
-<!--
 <script src="//code.angularjs.org/angular-1.0.0rc10.min.js"></script>
--->
-<script src="https://code.angularjs.org/1.2.16/angular.js"></script>
 <script src="js/main.js"></script>
+<script src="js/dragdrop.js"></script>
 </body>
 </html>
