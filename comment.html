@@ -60,7 +60,7 @@ markup reference : http://bootstrapk.com/BS3/css#overview
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="input-group">
-					<ul class="list-group">
+					<ul class="list-group" id="commentList">
 					  <li class="list-group-item">
 					  <h3>comment content</h3>2014. 11. 24. by oskm
 					  </li>
@@ -71,9 +71,9 @@ markup reference : http://bootstrapk.com/BS3/css#overview
 					</ul>
 				</div><!-- /input-group -->
 					<div class="input-group">
-					<input type="text" class="form-control">
+					<input id="commentInput" type="text" class="form-control">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">Comment</button>
+						<button id="addComment" class="btn btn-default" type="button">Comment</button>
 					</span>
 				</div><!-- /input-group -->
 			
@@ -93,16 +93,30 @@ markup reference : http://bootstrapk.com/BS3/css#overview
 
 
 <script src="//code.jquery.com/jquery-1.11.0.js"></script>
+<!-- https://github.com/codepb/jquery-template -->
+<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 <!--
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.js"></script>
 <script>
 	// local storage 에서 데이터 로딩
+	
+
+
 
 	// 덧글 추가
-	
+	$('#addComment').on('click', function() {
+		$('#commentList').append(_.template($('#commentTemplate').html(), {commentBody:$('#commentInput').val(), commentWriteDt : '2014.11.20', commentWriter : 'oskmkr'}));
+
+	});
+
 	// 덧글 삭제
+</script>
+<script id="commentTemplate" type="text/html">
+<li class="list-group-item">
+<h3><%=commentBody%></h3><%=commentWriteDt%> by <%=commentWriter%>
+</li>
 </script>
 </body>
 </html>
