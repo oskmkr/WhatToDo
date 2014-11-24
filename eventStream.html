@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="whatToDoApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WebSocket Client</title>
+		<!--
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
+	-->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.css">
+</head>
+<body>
+	<!-- Static navbar -->
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<button id="startBtn" name="doitbutton" value="start">start</button>
+		</div>
+		<div id="footer">
+			<div class="container">
+				<p class="text-muted credit">이 앱은 <a href="http://martinbean.co.uk">bootstrap</a> 을 이용해 개발 되었습니다.</p>
+			</div>
+		</div>
+	</div>
+
+
+<script src="//code.jquery.com/jquery-1.11.0.js"></script>
+<!--
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+-->
+<script>
+	$('#startBtn').bind('click', function(evt) {
+		console.log('click');
+		registerEventSource();
+	});
+
+	var registerEventSource = function() {
+		var eventSource = new EventSource('http://www.oskm.com:8080/EventSent.nhn');
+		//var eventSource = new EventSource('https://s-dal5-nss-16.firebaseio.com//.json?ns=pieetest&sse=true');
+
+		eventSource.addEventListener('message', function(e) {
+			console.log('message', e);
+			var data = e.data.split('\n');
+			console.log(data);
+		}, false);
+
+		eventSource.addEventListener('open', function(e) {
+			console.log('open', e);
+			
+		}, false);
+
+		eventSource.addEventListener('error', function(e) {
+			console.log('error', e);
+			
+		}, false);
+	
+	}
+
+	
+</script>
+</body>
+</html>
