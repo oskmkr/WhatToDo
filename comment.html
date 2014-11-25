@@ -1,5 +1,7 @@
 <!-- 
 markup reference : http://bootstrapk.com/BS3/css#overview 
+jquery - DOM control
+underscore - template engine
 -->
 <!DOCTYPE html>
 <html>
@@ -13,54 +15,14 @@ markup reference : http://bootstrapk.com/BS3/css#overview
 	<!--
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
 	-->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
 </head>
 <body>
-	<!-- Static navbar -->
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/test">What ToDo ?</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="mailto:oskmkr@naver.com">Contact</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="../navbar/">Default</a></li>
-					<li class="active"><a href="./">Static top</a></li>
-					<li><a href="../navbar-fixed-top/">Fixed top</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</div>
-
-	<hr><hr>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6">
-				<div class="input-group">
 					<ul class="list-group" id="commentList">
+					<!--
 					  <li class="list-group-item">
 					  <h3>comment content</h3>2014. 11. 24. by oskm
 					  </li>
@@ -68,9 +30,13 @@ markup reference : http://bootstrapk.com/BS3/css#overview
 					  <li class="list-group-item">Morbi leo risus</li>
 					  <li class="list-group-item">Porta ac consectetur ac</li>
 					  <li class="list-group-item">Vestibulum at eros</li>
+					  -->
 					</ul>
-				</div><!-- /input-group -->
 					<div class="input-group">
+					  <span class="input-group-addon">닉네임</span>
+					  <input type="text" class="form-control" placeholder="Username">
+					</div>
+					<div class="input-group input-group-lg">
 					<input id="commentInput" type="text" class="form-control">
 					<span class="input-group-btn">
 						<button id="addComment" class="btn btn-default" type="button">Comment</button>
@@ -92,23 +58,36 @@ markup reference : http://bootstrapk.com/BS3/css#overview
 	</div>
 
 
-<script src="//code.jquery.com/jquery-1.11.0.js"></script>
+<script src="./js/lib/jquery-1.11.0.js"></script>
 <!-- https://github.com/codepb/jquery-template -->
-<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+<script src="./js/lib/underscore.js"></script>
 <!--
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.js"></script>
+<script src="./js/lib/bootstrap.js"></script>
 <script>
 	// local storage 에서 데이터 로딩
-	
 
 
+	// document.getElementById('id') == $('#id')
 
 	// 덧글 추가
+	// 1. 덧글 쓰기 버튼을 클릭 하면
 	$('#addComment').on('click', function() {
-		$('#commentList').append(_.template($('#commentTemplate').html(), {commentBody:$('#commentInput').val(), commentWriteDt : '2014.11.20', commentWriter : 'oskmkr'}));
-
+		// 2. 덧글 입력창에 있는 내용을 얻어온다.
+		var commentInputValue = $('#commentInput').val();
+		
+		// 3. 덧글 마크업을 만든다.
+		//var commentMarkup = '<li class="list-group-item">' + commentInputValue + '</li>';
+		var commentMarkup = _.template($('#commentTemplate').html(), {commentBody: commentInputValue, commentWriteDt : new Date(), commentWriter : 'oskmkr'});
+		
+		// 4. 만들어진 마크업을 추가한다.
+		$('#commentList').append(commentMarkup);
+		
+		//$('#commentList').append(_.template($('#commentTemplate').html(), {commentBody:$('#commentInput').val(), commentWriteDt : '2014.11.20', commentWriter : 'oskmkr'}));
+		// 5. 덧글 입력창 내용을 초기화 한다.
+		$('#commentInput').val('');
+		
 	});
 
 	// 덧글 삭제
