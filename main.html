@@ -63,14 +63,17 @@
 				</div><!-- /input-group -->
 			</div><!-- /.col-lg-6 -->
 		</div><!-- /.row -->
-
+        <hr>
 		<div class="row" ng-repeat="content in todos track by $index" ng-model="todos" ng-change="test()">
 			<div class="col-lg-6">
 				<div class="input-group">
 					<span class="input-group-addon">
 						<input type="checkbox" ng-model="todos[$index].done">
 					</span>
-					<input type="text" class="form-control" value="{{content.subject}}" ng-model="todos[$index].subject" ng-blur="test()">
+					<input type="text" class="form-control" value="{{content.subject}}" ng-model="todos[$index].subject" ng-blur="update()">
+					<span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="delete($index)">Del</button>
+                    </span>
 				</div><!-- /input-group -->
 			</div><!-- /.col-lg-6 -->
 		</div>

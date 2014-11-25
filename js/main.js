@@ -59,6 +59,12 @@ app.controller('ContentController', ['$scope', '$log', function ($scope, $log) {
         }
     };
     
+    $scope.delete = function(index) {
+        var y = $scope.todos;
+        
+        y.splice( $.inArray(index, y), 1 );
+    }
+    
     $scope.test = function() {
         console.log('test...');
     }
