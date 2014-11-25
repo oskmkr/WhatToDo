@@ -3,9 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>WebSocket Client</title>
-		<!--
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
+	<title>WebSocket client</title>
+	<!--
+	http://requirejs.org/
+	-->
+	<!--
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
 	-->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.css">
 </head>
@@ -50,30 +53,22 @@
 
 	<hr><hr>
 	<div class="container" ng-controller="ContentController">
+	    <div class="row">
+	        <div class="col-xs-6">
+	            <textarea rows="20" class="form-control" id="board" placeholder="chat board"></textarea>
+	        </div>
+    	</div>
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="input-group">
 					<input type="text" class="form-control">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">Add</button>
+						<button class="btn btn-default" type="button">Send</button>
 					</span>
 				</div><!-- /input-group -->
 			</div><!-- /.col-lg-6 -->
 		</div><!-- /.row -->
-        <hr>
-		<div class="row" ng-repeat="content in todos track by $index" ng-model="todos" ng-change="test()">
-			<div class="col-lg-6">
-				<div class="input-group">
-					<span class="input-group-addon">
-						<input type="checkbox" ng-model="todos[$index].done">
-					</span>
-					<input type="text" class="form-control" value="{{content.subject}}" ng-model="todos[$index].subject" ng-blur="update()">
-					<span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="delete($index)">Del</button>
-                    </span>
-				</div><!-- /input-group -->
-			</div><!-- /.col-lg-6 --> 
-		</div>
+		
 		<hr>
 		<div id="footer">
 			<div class="container">
@@ -89,7 +84,7 @@
 -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.js"></script>
 <script src="//code.angularjs.org/angular-1.0.0rc10.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/dragdrop.js"></script>
+<script src="//requirejs.org/docs/release/2.1.14/comments/require.js"></script>
+<script src="js/chatClient.js"></script>
 </body>
 </html>

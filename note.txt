@@ -1,0 +1,5 @@
+http://jasonturim.wordpress.com/2013/09/01/angularjs-drag-and-drop/
+
+Design Goals
+a. changes index through drag and drop mechanism
+b. delete item(todo) through drag and drop mechanism
